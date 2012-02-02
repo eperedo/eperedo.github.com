@@ -1,8 +1,95 @@
-<html>
-	<head>
-		<title>eperedo Github page</title>
-	</head>
-	<body>
-		<h1>Eduardo Peredo GitHub</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Eduardo Peredo portfolio</title>
+    <meta name="description" content="Github, Eduardo, Peredo">
+    <meta name="author" content="Eduardo Peredo">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="assets/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="assets/bootstrap-responsive.css" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+          </a>
+          <a class="brand" href="#">Eduardo's Github Page</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>              
+              <li><a href="mailto:jrperedo@gmail.com">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Hello coder!</h1>
+        <p>This is my homepage on github, below you can see my open source projects!</p>
+		<a href="https://twitter.com/eperedo" class="twitter-follow-button" data-show-count="false" data-size="large">Follow me on twitter</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+
+      <!-- Example row of columns -->
+      <div id="repositories" class="row">        
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Eduardo Peredo 2012</p>
+      </footer>
+
+    </div> <!-- /container -->	
+	<a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
+	
+	<script type="text/html" id="repositoriesList">					
+		{{if (name != "eperedo.github.com")}}
+			<div class="span6">
+				<h2>${name}</h2>
+				<p>${description}</p>
+				<p><a class="btn btn-primary" href="${html_url}" target="_blank">Fork me!</a>
+			</div>
+		{{/if}}			       
+	</script>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	<script>
+		$(document).on("ready", init);
+		function init(){
+			 $.getJSON("https://api.github.com/users/eperedo/repos?callback=?", function (result) {
+				repos = result.data;					
+				console.log(repos);
+				$("#repositoriesList").tmpl(repos).appendTo("#repositories");
+			 });
+		}
+	</script>
+  </body>
 </html>
