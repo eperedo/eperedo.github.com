@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Eduardo Peredo portfolio</title>
+    <title>Eduardo Peredo Portfolio</title>
     <meta name="description" content="Github, Eduardo, Peredo">
     <meta name="author" content="Eduardo Peredo">
 
@@ -57,9 +57,7 @@
       <!-- Example row of columns -->
       <div id="repositories" class="row">        
       </div>
-
       <hr>
-
       <footer>
         <p>&copy; Eduardo Peredo 2012</p>
       </footer>
@@ -74,7 +72,7 @@
 				<p>${description}</p>
 				<p><a class="btn btn-primary" href="${html_url}" target="_blank">Fork me!</a>
 			</div>
-		{{/if}}			       
+		{{/if}}
 	</script>
     <!-- Le javascript
     ================================================== -->
@@ -85,8 +83,7 @@
 		$(document).on("ready", init);
 		function init(){
 			 $.getJSON("https://api.github.com/users/eperedo/repos?callback=?", function (result) {
-				repos = result.data;					
-				console.log(repos);
+				repos = result.data;
 				$("#repositoriesList").tmpl(repos).appendTo("#repositories");
 			 });
 		}
